@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventHub PK | Pakistan's Premier Event Registration Platform</title>
+  <meta name="description" content="Discover, register, and attend the best professional events across Pakistan.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231e40af'/><text y='22' x='6' font-size='18'>🎟</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue-900: #0f1f5c;
+      --blue-800: #1e3a8a;
+      --blue-600: #2563eb;
+      --blue-500: #3b82f6;
+      --blue-100: #dbeafe;
+      --blue-50: #eff6ff;
+      --green-500: #22c55e;
+      --green-100: #dcfce7;
+      --green-800: #166534;
+      --red-500: #ef4444;
+      --red-100: #fee2e2;
+      --red-800: #991b1b;
+      --amber-500: #f59e0b;
+      --amber-100: #fef3c7;
+      --purple-500: #8b5cf6;
+      --purple-100: #ede9fe;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-400: #94a3b8;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --white: #ffffff;
+      --font-display: 'Sora', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.05);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--slate-50); color: var(--slate-800); line-height: 1.6; font-size: 15px; }
+
+    /* ===== SKIP LINK ===== */
+    .skip-link { position: absolute; top: -100%; left: 1rem; background: var(--blue-600); color: white; padding: 0.5rem 1rem; border-radius: var(--radius-sm); z-index: 9999; font-size: 14px; text-decoration: none; transition: top 0.2s; }
+    .skip-link:focus { top: 1rem; }
+
+    /* ===== ANNOUNCEMENT BAR ===== */
+    .announcement-bar { background: var(--blue-800); color: white; text-align: center; padding: 0.6rem 1rem; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.01em; }
+    .announcement-bar a { color: var(--blue-100); text-decoration: underline; }
+
+    /* ===== NAVBAR ===== */
+    .navbar { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--slate-200); position: sticky; top: 0; z-index: 200; }
+    .nav-container { max-width: 1280px; margin: 0 auto; padding: 0.875rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { width: 36px; height: 36px; background: var(--blue-800); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .logo-text { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--blue-800); letter-spacing: -0.02em; }
+    .logo-text span { color: var(--blue-500); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .nav-badge { background: var(--blue-50); color: var(--blue-800); border: 1px solid var(--blue-100); padding: 0.3rem 0.8rem; border-radius: 2rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: var(--slate-600); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--blue-600); }
+
+    /* Nav user area */
+    .nav-user { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-user-name { font-size: 0.85rem; font-weight: 600; color: var(--slate-700); }
+    .btn-nav { padding: 0.45rem 1rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.83rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.15s; }
+    .btn-nav-login { background: var(--blue-600); color: white; }
+    .btn-nav-login:hover { background: var(--blue-800); }
+    .btn-nav-logout { background: var(--slate-100); color: var(--slate-600); border: 1px solid var(--slate-200); }
+    .btn-nav-logout:hover { background: var(--red-100); color: var(--red-800); }
+
+    /* ===== AUTH MODAL ===== */
+    .auth-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.6); backdrop-filter: blur(6px); z-index: 500; display: flex; align-items: flex-start; justify-content: center; padding: 1.5rem; animation: fadeIn 0.2s ease; overflow-y: auto; }
+    .auth-overlay.hidden { display: none; }
+    .auth-modal { background: white; border-radius: var(--radius-xl); padding: 0; max-width: 480px; width: 100%; box-shadow: var(--shadow-lg); animation: slideUp 0.25s ease; overflow: hidden; margin: auto; flex-shrink: 0; }
+    body.modal-open { overflow: hidden; }
+    .auth-header { background: var(--blue-900); padding: 2rem 2rem 1.5rem; color: white; position: relative; }
+    .auth-header::before { content:''; position:absolute; top:-40px; right:-40px; width:200px; height:200px; background: radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 70%); pointer-events: none; }
+    .auth-logo { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 1rem; }
+    .auth-logo span { color: var(--blue-500); }
+    .auth-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.3rem; position: relative; }
+    .auth-subtitle { font-size: 0.85rem; color: rgba(255,255,255,0.65); position: relative; }
+    .auth-tabs { display: flex; border-bottom: 1px solid var(--slate-100); padding: 0 1.5rem; background: white; }
+    .auth-tab { padding: 1rem 1.25rem; font-family: var(--font-body); font-size: 0.88rem; font-weight: 600; color: var(--slate-400); background: none; border: none; cursor: pointer; border-bottom: 2.5px solid transparent; transition: all 0.15s; margin-bottom: -1px; }
+    .auth-tab.active { color: var(--blue-600); border-bottom-color: var(--blue-600); }
+    .auth-body { padding: 1.75rem 2rem 2rem; }
+    .auth-form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .auth-form-group label { font-size: 0.8rem; font-weight: 600; color: var(--slate-600); }
+    .auth-form-group label .req { color: var(--red-500); }
+    .auth-input { width: 100%; padding: 0.72rem 0.9rem; border: 1.5px solid var(--slate-200); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.9rem; color: var(--slate-800); background: var(--slate-50); transition: border-color 0.15s, box-shadow 0.15s; }
+    .auth-input:focus { outline: none; border-color: var(--blue-500); box-shadow: 0 0 0 3px rgba(59,130,246,0.12); background: white; }
+    .auth-input.valid { border-color: var(--green-500); background: #f0fdf4; }
+    .auth-input.invalid { border-color: var(--red-500); background: #fef2f2; }
+    .auth-select { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2rem; }
+    .auth-phone-row { display: flex; gap: 0.5rem; }
+    .auth-phone-row .auth-input:first-child { width: 130px; flex-shrink: 0; }
+    .auth-phone-row .auth-input:last-child { flex: 1; }
+    .auth-hint { font-size: 0.72rem; color: var(--red-500); margin-top: 0.15rem; min-height: 1rem; }
+    .auth-hint.ok { color: var(--green-500); }
+    .btn-auth-submit { width: 100%; padding: 0.85rem; background: var(--blue-600); color: white; border: none; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; margin-top: 0.5rem; transition: background 0.15s, transform 0.1s; }
+    .btn-auth-submit:hover:not(:disabled) { background: var(--blue-800); transform: translateY(-1px); }
+    .btn-auth-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+    .auth-switch { text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--slate-400); }
+    .auth-switch a { color: var(--blue-600); text-decoration: none; font-weight: 600; cursor: pointer; }
+    .auth-switch a:hover { text-decoration: underline; }
+    .auth-error-banner { background: var(--red-100); color: var(--red-800); border: 1px solid #fecaca; border-radius: var(--radius-sm); padding: 0.65rem 1rem; font-size: 0.85rem; font-weight: 500; margin-bottom: 1rem; display: none; }
+    .auth-error-banner.visible { display: block; }
+    .auth-success-banner { background: var(--green-100); color: var(--green-800); border: 1px solid #bbf7d0; border-radius: var(--radius-sm); padding: 0.65rem 1rem; font-size: 0.85rem; font-weight: 500; margin-bottom: 1rem; display: none; }
+    .auth-success-banner.visible { display: block; }
+    .auth-close-btn { position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,0.15); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
+    .auth-close-btn:hover { background: rgba(255,255,255,0.25); }
+
+    /* ===== MAIN CONTAINER ===== */
+    .container { max-width: 1280px; margin: 0 auto; padding: 2rem 2rem 3rem; }
+
+    /* ===== HERO ===== */
+    .hero { background: var(--blue-900); border-radius: var(--radius-xl); padding: 4rem 3rem 3rem; margin-bottom: 2.5rem; color: white; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(59,130,246,0.25) 0%, transparent 70%); pointer-events: none; }
+    .hero::after { content: ''; position: absolute; bottom: -80px; left: 30%; width: 400px; height: 300px; background: radial-gradient(ellipse, rgba(37,99,235,0.2) 0%, transparent 70%); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 1; max-width: 680px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; background: rgba(59,130,246,0.2); border: 1px solid rgba(59,130,246,0.35); color: var(--blue-100); padding: 0.35rem 0.9rem; border-radius: 2rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1.25rem; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1rem; }
+    .hero h1 em { font-style: normal; color: var(--blue-500); }
+    .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.7); max-width: 520px; line-height: 1.65; margin-bottom: 2rem; }
+    .hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--blue-500); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: background 0.15s, transform 0.1s; }
+    .btn-primary:hover { background: var(--blue-600); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: white; padding: 0.75rem 1.5rem; border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.95rem; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: background 0.15s, border-color 0.15s; }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar { background: white; border-radius: var(--radius-md); padding: 1.25rem 2rem; margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 1.5rem; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200); }
+    .trust-item { text-align: center; }
+    .trust-number { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--blue-600); line-height: 1; margin-bottom: 0.2rem; }
+    .trust-label { font-size: 0.78rem; color: var(--slate-400); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+    .trust-divider { width: 1px; height: 36px; background: var(--slate-200); }
+
+    /* ===== PROFILE CARD ===== */
+    .profile-card { background: white; border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2.5rem; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200); }
+    .profile-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.75rem; flex-wrap: wrap; gap: 1rem; }
+    .profile-info { display: flex; align-items: center; gap: 1rem; }
+    .profile-avatar { width: 52px; height: 52px; background: var(--blue-50); border: 2px solid var(--blue-100); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .profile-text h2 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--slate-800); }
+    .profile-text p { font-size: 0.85rem; color: var(--slate-400); margin-top: 0.15rem; }
+    .profile-section-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--slate-400); margin-bottom: 1rem; border-bottom: 1px solid var(--slate-100); padding-bottom: 0.5rem; }
+    .btn-edit { padding: 0.5rem 1.1rem; background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-sm); cursor: pointer; font-size: 0.85rem; font-family: var(--font-body); font-weight: 500; color: var(--slate-600); display: inline-flex; align-items: center; gap: 5px; transition: all 0.15s; }
+    .btn-edit:hover { background: var(--slate-100); color: var(--slate-800); }
+
+    /* ===== GUEST BANNER ===== */
+    .guest-banner { background: linear-gradient(135deg, var(--blue-50), #e0f2fe); border: 1px solid var(--blue-100); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem; }
+    .guest-banner-text h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--blue-900); margin-bottom: 0.3rem; }
+    .guest-banner-text p { font-size: 0.88rem; color: var(--slate-600); }
+    .guest-banner-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    /* ===== FORM ===== */
+    .form-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.8rem; font-weight: 600; color: var(--slate-600); letter-spacing: 0.01em; }
+    .form-group label .required { color: var(--red-500); margin-left: 2px; }
+    .form-group input, .form-group select { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--slate-200); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.9rem; color: var(--slate-800); background: var(--slate-50); transition: border-color 0.15s, box-shadow 0.15s, background 0.15s; -webkit-appearance: none; appearance: none; }
+    .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2rem; }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--blue-500); box-shadow: 0 0 0 3px rgba(59,130,246,0.12); background: white; }
+    .form-group input:disabled, .form-group select:disabled { background: var(--slate-100); color: var(--slate-400); cursor: not-allowed; border-color: var(--slate-200); }
+    .field-valid { border-color: var(--green-500) !important; background: #f0fdf4 !important; }
+    .field-invalid { border-color: var(--red-500) !important; background: #fef2f2 !important; }
+    .error-text { color: var(--red-500); font-size: 0.72rem; margin-top: 0.15rem; }
+    .valid-text { color: var(--green-500); font-size: 0.72rem; margin-top: 0.15rem; }
+    .phone-group { display: flex; gap: 0.5rem; }
+    .phone-group select { width: 40%; min-width: 110px; flex-shrink: 0; }
+    .phone-group input { flex: 1; }
+    .btn-save { margin-top: 1.5rem; padding: 0.8rem 2rem; background: var(--blue-600); color: white; border: none; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: background 0.15s, transform 0.1s, opacity 0.15s; }
+    .btn-save:hover:not(:disabled) { background: var(--blue-800); transform: translateY(-1px); }
+    .btn-save:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+    .status-message { margin-top: 1rem; font-size: 0.88rem; }
+    .status-success { background: var(--green-100); color: var(--green-800); border: 1px solid #bbf7d0; padding: 0.6rem 1rem; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 6px; font-weight: 500; }
+    .status-error { background: var(--red-100); color: var(--red-800); border: 1px solid #fecaca; padding: 0.6rem 1rem; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 6px; font-weight: 500; }
+
+    /* ===== FILTER BAR ===== */
+    .filter-bar { background: white; border-radius: var(--radius-md); padding: 1.1rem 1.5rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200); }
+    .filter-group { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+    .filter-label { font-size: 0.78rem; font-weight: 600; color: var(--slate-400); letter-spacing: 0.04em; text-transform: uppercase; }
+    .filter-select { padding: 0.5rem 0.9rem; border: 1px solid var(--slate-200); border-radius: 2rem; font-size: 0.83rem; font-family: var(--font-body); font-weight: 500; background: var(--slate-50); color: var(--slate-700); cursor: pointer; -webkit-appearance: none; appearance: none; padding-right: 1.6rem; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.6rem center; transition: border-color 0.15s; }
+    .filter-select:focus { outline: none; border-color: var(--blue-500); }
+    .search-wrap { position: relative; }
+    .search-icon { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--slate-400); font-size: 0.85rem; pointer-events: none; }
+    .search-input { padding: 0.5rem 1rem 0.5rem 2.2rem; border: 1px solid var(--slate-200); border-radius: 2rem; font-size: 0.85rem; font-family: var(--font-body); background: var(--slate-50); min-width: 230px; transition: border-color 0.15s, box-shadow 0.15s; }
+    .search-input:focus { outline: none; border-color: var(--blue-500); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); background: white; }
+
+    /* ===== TABS ===== */
+    .tabs { display: flex; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .tab-btn { padding: 0.55rem 1.3rem; background: white; border: 1px solid var(--slate-200); border-radius: 2rem; font-size: 0.88rem; font-family: var(--font-body); font-weight: 500; cursor: pointer; transition: all 0.15s; color: var(--slate-600); }
+    .tab-btn:hover { background: var(--slate-50); color: var(--slate-800); }
+    .tab-btn.active { background: var(--blue-600); border-color: var(--blue-600); color: white; }
+
+    /* ===== EVENTS GRID ===== */
+    .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+    .event-card { background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+    .event-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .event-card-top { padding: 1.25rem 1.25rem 0; display: flex; justify-content: space-between; align-items: flex-start; }
+    .event-badge { display: inline-flex; align-items: center; gap: 5px; padding: 0.3rem 0.75rem; border-radius: 2rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .event-badge.workshop { background: var(--amber-100); color: #92400e; }
+    .event-badge.training { background: var(--green-100); color: #14532d; }
+    .event-badge.conference { background: var(--red-100); color: #991b1b; }
+    .event-badge.certification { background: var(--purple-100); color: #4c1d95; }
+    .event-badge.seminar { background: var(--blue-50); color: var(--blue-800); }
+    .event-seats-badge { font-size: 0.72rem; font-weight: 600; color: var(--slate-400); }
+    .event-seats-badge.urgent { color: var(--red-500); }
+    .event-content { padding: 1rem 1.25rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
+    .event-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--slate-800); margin-bottom: 0.6rem; line-height: 1.35; }
+    .event-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-bottom: 0.75rem; }
+    .event-meta-item { font-size: 0.8rem; color: var(--slate-400); display: flex; align-items: center; gap: 4px; }
+    .event-description { font-size: 0.83rem; color: var(--slate-600); line-height: 1.55; margin-bottom: 1rem; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-clamp: 2; overflow: hidden; }
+    .event-footer { margin-top: auto; }
+    .event-price-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+    .event-price { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--blue-600); }
+    .event-price-free { color: var(--green-500); }
+    .progress-bar { background: var(--slate-100); border-radius: 4px; height: 5px; overflow: hidden; margin-bottom: 0.75rem; }
+    .progress-fill { background: linear-gradient(90deg, var(--blue-500), var(--green-500)); height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+    .progress-fill.almost-full { background: linear-gradient(90deg, var(--amber-500), var(--red-500)); }
+    .register-btn { width: 100%; padding: 0.75rem; background: var(--blue-600); color: white; border: none; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.15s, transform 0.1s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .register-btn:hover:not(:disabled) { background: var(--blue-800); transform: translateY(-1px); }
+    .register-btn:disabled { background: var(--slate-200); color: var(--slate-400); cursor: not-allowed; transform: none; }
+    .register-btn.full { background: var(--red-100); color: var(--red-800); }
+    .register-btn.login-required { background: var(--blue-50); color: var(--blue-600); border: 1px solid var(--blue-100); }
+    .register-btn.login-required:hover { background: var(--blue-100); }
+
+    /* ===== SKELETON ===== */
+    .skeleton { background: linear-gradient(90deg, var(--slate-100) 25%, var(--slate-200) 50%, var(--slate-100) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--radius-sm); }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    .skeleton-card { height: 280px; border-radius: var(--radius-lg); }
+
+    /* ===== MY REGISTRATIONS ===== */
+    .my-events-list { background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200); }
+    .my-events-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--slate-100); background: var(--slate-50); }
+    .my-events-header h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--slate-700); }
+    .my-event-item { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--slate-100); flex-wrap: wrap; gap: 0.75rem; transition: background 0.15s; }
+    .my-event-item:hover { background: var(--slate-50); }
+    .my-event-item:last-child { border-bottom: none; }
+    .my-event-info strong { font-size: 0.95rem; font-weight: 600; color: var(--slate-800); display: block; margin-bottom: 0.25rem; }
+    .my-event-meta { font-size: 0.8rem; color: var(--slate-400); display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .my-event-amount { font-weight: 600; color: var(--blue-600); }
+    .cancel-btn { padding: 0.45rem 1rem; background: var(--red-100); color: var(--red-800); border: 1px solid #fecaca; border-radius: var(--radius-sm); font-size: 0.82rem; font-family: var(--font-body); font-weight: 600; cursor: pointer; transition: all 0.15s; }
+    .cancel-btn:hover { background: #fee2e2; }
+
+    /* ===== TICKET MODAL ===== */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.5); backdrop-filter: blur(4px); z-index: 300; display: flex; align-items: center; justify-content: center; padding: 1.5rem; animation: fadeIn 0.15s ease; }
+    .modal-overlay.hidden { display: none; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .modal { background: white; border-radius: var(--radius-lg); padding: 2rem; max-width: 440px; width: 100%; box-shadow: var(--shadow-lg); animation: slideUp 0.2s ease; }
+    .modal-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--slate-800); margin-bottom: 0.4rem; }
+    .modal-subtitle { font-size: 0.85rem; color: var(--slate-400); margin-bottom: 1.5rem; }
+    .ticket-selector { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .ticket-btn { width: 36px; height: 36px; background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 50%; font-size: 1.1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+    .ticket-btn:hover { background: var(--blue-50); border-color: var(--blue-500); color: var(--blue-600); }
+    .ticket-count { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--slate-800); min-width: 2rem; text-align: center; }
+    .modal-total { background: var(--slate-50); border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; font-size: 0.9rem; }
+    .modal-total-label { color: var(--slate-500); font-weight: 500; }
+    .modal-total-amount { font-family: var(--font-display); font-weight: 700; color: var(--blue-600); }
+    .modal-actions { display: flex; gap: 0.75rem; }
+    .btn-cancel-modal { flex: 1; padding: 0.7rem; background: white; border: 1px solid var(--slate-200); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; cursor: pointer; color: var(--slate-600); transition: all 0.15s; }
+    .btn-cancel-modal:hover { background: var(--slate-50); }
+    .btn-confirm { flex: 2; padding: 0.7rem; background: var(--blue-600); color: white; border: none; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+    .btn-confirm:hover:not(:disabled) { background: var(--blue-800); }
+    .btn-confirm:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* ===== EMPTY STATE ===== */
+    .empty-state { text-align: center; padding: 4rem 2rem; color: var(--slate-400); }
+    .empty-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
+    .empty-state h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--slate-600); margin-bottom: 0.4rem; }
+    .empty-state p { font-size: 0.88rem; }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--slate-900); color: var(--slate-400); margin-top: 4rem; }
+    .footer-grid { max-width: 1280px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; }
+    .footer-brand .logo-text { color: white; font-size: 1.2rem; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.65; margin-top: 0.75rem; color: var(--slate-400); max-width: 260px; }
+    .footer-col h4 { font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; color: white; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a { color: var(--slate-400); text-decoration: none; font-size: 0.85rem; transition: color 0.15s; }
+    .footer-col ul li a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 1.25rem 2rem; max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8rem; }
+    .footer-bottom-links { display: flex; gap: 1.5rem; }
+    .footer-bottom-links a { color: var(--slate-400); text-decoration: none; font-size: 0.8rem; transition: color 0.15s; }
+    .footer-bottom-links a:hover { color: white; }
+    .footer-social { display: flex; gap: 0.75rem; margin-top: 1rem; }
+    .social-link { width: 34px; height: 34px; background: rgba(255,255,255,0.07); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; text-decoration: none; transition: background 0.15s; }
+    .social-link:hover { background: rgba(255,255,255,0.15); }
+
+    /* ===== TOAST ===== */
+    .toast-container { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999; display: flex; flex-direction: column; gap: 0.5rem; }
+    .toast { background: var(--slate-900); color: white; padding: 0.85rem 1.25rem; border-radius: var(--radius-md); font-size: 0.88rem; font-weight: 500; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow-lg); animation: toastIn 0.25s ease; max-width: 320px; }
+    .toast.success { border-left: 3px solid var(--green-500); }
+    .toast.error { border-left: 3px solid var(--red-500); }
+    @keyframes toastIn { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    @keyframes toastOut { to { transform: translateX(20px); opacity: 0; } }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) {
+      .container { padding: 1rem; }
+      .hero { padding: 2rem 1.5rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .events-grid { grid-template-columns: 1fr; }
+      .filter-bar { flex-direction: column; align-items: stretch; }
+      .search-input { min-width: auto; width: 100%; }
+      .phone-group { flex-direction: column; }
+      .phone-group select, .phone-group input { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .nav-links { display: none; }
+      .trust-divider { display: none; }
+      .auth-phone-row { flex-direction: column; }
+      .auth-phone-row .auth-input:first-child { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar" role="banner">
+    🎉 New: Early bird pricing available for Tech Summit Karachi 2025 — <a href="#events">Register now</a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="/" class="logo" aria-label="EventHub PK Home">
+        <div class="logo-icon" aria-hidden="true">🎟</div>
+        <span class="logo-text">Event<span>Hub</span> PK</span>
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links" role="list">
+          <li><a href="#events">Browse Events</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <span class="nav-badge">🇵🇰 Pakistan</span>
+        <!-- Nav auth area — injected by JS -->
+        <div class="nav-user" id="navUserArea"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== AUTH MODAL ===== -->
+  <div class="auth-overlay hidden" id="authOverlay" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+    <div class="auth-modal">
+      <div class="auth-header">
+        <button class="auth-close-btn" onclick="closeAuthModal()" aria-label="Close">✕</button>
+        <div class="auth-logo">Event<span>Hub</span> PK</div>
+        <h2 class="auth-title" id="authModalTitle">Welcome back</h2>
+        <p class="auth-subtitle" id="authModalSubtitle">Sign in to your account to register for events</p>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="loginTab" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab" id="registerTab" onclick="switchAuthTab('register')">Create Account</button>
+      </div>
+      <div class="auth-body">
+        <div id="authErrorBanner" class="auth-error-banner" role="alert"></div>
+        <div id="authSuccessBanner" class="auth-success-banner" role="status"></div>
+
+        <!-- LOGIN FORM -->
+        <div id="loginForm">
+          <div class="auth-form-group">
+            <label for="loginEmail">Email Address <span class="req">*</span></label>
+            <input class="auth-input" type="email" id="loginEmail" placeholder="ahmed@example.com" autocomplete="email">
+            <div class="auth-hint" id="loginEmailHint"></div>
+          </div>
+          <div class="auth-form-group">
+            <label for="loginPassword">Password <span class="req">*</span></label>
+            <input class="auth-input" type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password">
+            <div class="auth-hint" id="loginPasswordHint"></div>
+          </div>
+          <button class="btn-auth-submit" onclick="handleLogin()" id="loginBtn">Sign In →</button>
+          <p class="auth-switch">Don't have an account? <a onclick="switchAuthTab('register')">Create one free</a></p>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div id="registerForm" style="display:none">
+          <div class="auth-form-group">
+            <label for="regName">Full Name <span class="req">*</span></label>
+            <input class="auth-input" type="text" id="regName" placeholder="e.g., Ahmed Raza" autocomplete="name">
+            <div class="auth-hint" id="regNameHint"></div>
+          </div>
+          <div class="auth-form-group">
+            <label for="regEmail">Email Address <span class="req">*</span></label>
+            <input class="auth-input" type="email" id="regEmail" placeholder="ahmed@example.com" autocomplete="email">
+            <div class="auth-hint" id="regEmailHint"></div>
+          </div>
+          <div class="auth-form-group">
+            <label for="regPhone">Phone Number <span class="req">*</span></label>
+            <div class="auth-phone-row">
+              <select class="auth-input auth-select" id="regCountryCode" autocomplete="tel-country-code">
+                <option value="+92">🇵🇰 +92</option>
+                <option value="+93">🇦🇫 +93</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+91">🇮🇳 +91</option>
+                <option value="+86">🇨🇳 +86</option>
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+65">🇸🇬 +65</option>
+              </select>
+              <input class="auth-input" type="tel" id="regPhone" placeholder="3XXXXXXXXX" autocomplete="tel-national">
+            </div>
+            <div class="auth-hint" id="regPhoneHint"></div>
+          </div>
+          <div class="auth-form-group">
+            <label for="regCity">City <span class="req">*</span></label>
+            <select class="auth-input auth-select" id="regCity" autocomplete="address-level2">
+              <option value="">Select your city</option>
+              <option value="Karachi">Karachi</option>
+              <option value="Lahore">Lahore</option>
+              <option value="Islamabad">Islamabad</option>
+              <option value="Rawalpindi">Rawalpindi</option>
+              <option value="Faisalabad">Faisalabad</option>
+              <option value="Multan">Multan</option>
+              <option value="Gujranwala">Gujranwala</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Peshawar">Peshawar</option>
+              <option value="Quetta">Quetta</option>
+            </select>
+            <div class="auth-hint" id="regCityHint"></div>
+          </div>
+          <div class="auth-form-group">
+            <label for="regPassword">Password <span class="req">*</span></label>
+            <input class="auth-input" type="password" id="regPassword" placeholder="Min. 8 characters" autocomplete="new-password">
+            <div class="auth-hint" id="regPasswordHint"></div>
+          </div>
+          <button class="btn-auth-submit" onclick="handleRegister()" id="registerBtn">Create Account →</button>
+          <p class="auth-switch">Already have an account? <a onclick="switchAuthTab('login')">Sign in</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <div class="container">
+
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-eyebrow">Pakistan's Premier Event Platform</div>
+          <h1 id="hero-title">Discover <em>Amazing</em> Events<br>Across Pakistan</h1>
+          <p>Connect with industry leaders, upgrade your skills, and grow your professional network through curated workshops, conferences, and certification programs.</p>
+          <div class="hero-cta-row">
+            <a href="#events" class="btn-primary">Browse Events →</a>
+            <button class="btn-outline" onclick="openAuthModal('register')" id="heroCreateBtn">Create Account</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust Bar -->
+      <div class="trust-bar" role="region" aria-label="Platform statistics">
+        <div class="trust-item"><div class="trust-number" id="stat-events">—</div><div class="trust-label">Total Events</div></div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item"><div class="trust-number" id="stat-upcoming">—</div><div class="trust-label">Upcoming</div></div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item"><div class="trust-number" id="stat-registrations">—</div><div class="trust-label">Registrations</div></div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item"><div class="trust-number" id="stat-users">—</div><div class="trust-label">Members</div></div>
+      </div>
+
+      <!-- Profile / Guest Banner -->
+      <div id="profileSection"></div>
+
+      <!-- Events Section -->
+      <section id="events" aria-labelledby="events-heading">
+        <h2 id="events-heading" style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--slate-800);margin-bottom:1.25rem;">Upcoming Events</h2>
+
+        <div class="filter-bar" role="search" aria-label="Filter events">
+          <div class="filter-group">
+            <span class="filter-label" aria-hidden="true">Filter</span>
+            <select id="categoryFilter" class="filter-select" onchange="loadEvents()" aria-label="Filter by category">
+              <option value="all">All Categories</option>
+              <option value="Workshop">Workshops</option>
+              <option value="Training">Training</option>
+              <option value="Conference">Conferences</option>
+              <option value="Certification">Certifications</option>
+            </select>
+            <select id="cityFilter" class="filter-select" onchange="loadEvents()" aria-label="Filter by city">
+              <option value="all">All Cities</option>
+              <option value="Karachi">Karachi</option>
+              <option value="Lahore">Lahore</option>
+              <option value="Islamabad">Islamabad</option>
+              <option value="Rawalpindi">Rawalpindi</option>
+              <option value="Peshawar">Peshawar</option>
+            </select>
+          </div>
+          <div class="search-wrap">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input type="search" id="searchFilter" class="search-input" placeholder="Search events..." oninput="debounceLoadEvents()" aria-label="Search events">
+          </div>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Event sections">
+          <button class="tab-btn active" role="tab" aria-selected="true" onclick="showTab('events')" id="eventsTabBtn">📅 Browse Events</button>
+          <button class="tab-btn" role="tab" aria-selected="false" onclick="showTab('myevents')" id="myEventsTabBtn">✅ My Registrations</button>
+        </div>
+
+        <div id="eventsSection" role="tabpanel">
+          <div id="eventsList" class="events-grid" aria-live="polite">
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+          </div>
+        </div>
+
+        <div id="myEventsSection" style="display:none" role="tabpanel">
+          <div id="myEventsList" aria-live="polite"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- About -->
+    <section id="about" style="background:white;border-top:1px solid var(--slate-200);padding:4rem 0;margin-top:3rem;" aria-labelledby="about-heading">
+      <div style="max-width:1280px;margin:0 auto;padding:0 2rem;">
+        <div style="max-width:600px;">
+          <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--blue-500);margin-bottom:0.75rem;">About EventHub PK</p>
+          <h2 id="about-heading" style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--slate-900);line-height:1.2;margin-bottom:1rem;">Pakistan's most trusted event registration platform</h2>
+          <p style="color:var(--slate-600);line-height:1.7;margin-bottom:1.5rem;">Founded in 2020, EventHub PK connects professionals across Pakistan with workshops, conferences, and training programs. We partner with industry leaders to bring world-class events to every major city.</p>
+          <div style="display:flex;gap:2rem;flex-wrap:wrap;">
+            <div><div style="font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--blue-600);">500+</div><div style="font-size:0.82rem;color:var(--slate-400);">Events hosted</div></div>
+            <div><div style="font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--blue-600);">50,000+</div><div style="font-size:0.82rem;color:var(--slate-400);">Professionals reached</div></div>
+            <div><div style="font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--blue-600);">10</div><div style="font-size:0.82rem;color:var(--slate-400);">Cities covered</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="padding:4rem 0;" aria-labelledby="faq-heading">
+      <div style="max-width:1280px;margin:0 auto;padding:0 2rem;">
+        <h2 id="faq-heading" style="font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--slate-900);margin-bottom:2rem;text-align:center;">Frequently Asked Questions</h2>
+        <div style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="background:var(--blue-900);color:white;padding:3.5rem 0;" aria-labelledby="contact-heading">
+      <div style="max-width:1280px;margin:0 auto;padding:0 2rem;text-align:center;">
+        <h2 id="contact-heading" style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;margin-bottom:0.75rem;">Have a question or want to list your event?</h2>
+        <p style="color:rgba(255,255,255,0.65);margin-bottom:2rem;font-size:1rem;">We'd love to hear from you. Reach out to our team anytime.</p>
+        <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+          <a href="mailto:hello@eventhubpk.com" class="btn-primary" style="text-decoration:none;">📧 hello@eventhubpk.com</a>
+          <a href="tel:+922112345678" class="btn-outline" style="text-decoration:none;">📞 +92 21 1234 5678</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-text">Event<span>Hub</span> PK</div>
+        <p>Pakistan's premier platform for professional event discovery and registration. Empowering careers since 2020.</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-link" aria-label="Facebook">f</a>
+          <a href="#" class="social-link" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Platform</h4><ul><li><a href="#">Browse Events</a></li><li><a href="#">List Your Event</a></li><li><a href="#">For Organizations</a></li><li><a href="#">Event Analytics</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">Cookie Settings</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 EventHub PK. All rights reserved.</span>
+      <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Sitemap</a></div>
+    </div>
+  </footer>
+
+  <!-- Ticket Modal -->
+  <div class="modal-overlay hidden" id="ticketModal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <h3 class="modal-title" id="modal-title">Register for Event</h3>
+      <p class="modal-subtitle" id="modal-event-name">Select the number of tickets</p>
+      <div class="ticket-selector">
+        <button class="ticket-btn" onclick="changeTickets(-1)" aria-label="Decrease tickets">−</button>
+        <span class="ticket-count" id="ticketCount" aria-live="polite">1</span>
+        <button class="ticket-btn" onclick="changeTickets(1)" aria-label="Increase tickets">+</button>
+        <span style="font-size:0.85rem;color:var(--slate-400);">tickets</span>
+      </div>
+      <div class="modal-total">
+        <span class="modal-total-label">Total Amount</span>
+        <span class="modal-total-amount" id="modalTotal">PKR 0</span>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel-modal" onclick="closeModal()">Cancel</button>
+        <button class="btn-confirm" id="confirmBtn" onclick="confirmRegistration()">Confirm Registration →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+  'use strict';
+
+  // ============================================================
+  //  SESSION STORE — persists in localStorage under a session key
+  //  Simulates server-side sessions without a real backend.
+  //  Each user gets a unique sessionId cookie (stored in localStorage).
+  // ============================================================
+  const SESSION_KEY  = 'ehpk_session_id';
+  const USERS_KEY    = 'ehpk_users';
+  const REGS_KEY     = 'ehpk_registrations';
+  const EVENTS_KEY   = 'ehpk_events';
+
+  // ---- Helpers ----
+  function generateId() {
+    return Math.random().toString(36).slice(2) + Date.now().toString(36);
+  }
+
+  function getUsers() {
+    try { return JSON.parse(localStorage.getItem(USERS_KEY) || '[]'); } catch { return []; }
+  }
+  function saveUsers(u) { localStorage.setItem(USERS_KEY, JSON.stringify(u)); }
+
+  function getRegistrations() {
+    try { return JSON.parse(localStorage.getItem(REGS_KEY) || '[]'); } catch { return []; }
+  }
+  function saveRegistrations(r) { localStorage.setItem(REGS_KEY, JSON.stringify(r)); }
+
+  function getSessionId() { return localStorage.getItem(SESSION_KEY); }
+  function setSessionId(id) { localStorage.setItem(SESSION_KEY, id); }
+  function clearSession() { localStorage.removeItem(SESSION_KEY); }
+
+  function getCurrentUser() {
+    const sid = getSessionId();
+    if (!sid) return null;
+    const users = getUsers();
+    return users.find(u => u.sessionId === sid) || null;
+  }
+
+  // ---- Seed demo events in localStorage if not present ----
+  function seedEvents() {
+    if (localStorage.getItem(EVENTS_KEY)) return;
+    const events = [
+      { id: 1, title: 'Full-Stack Web Development Bootcamp', category: 'Workshop', date: '2025-06-15', location: 'Karachi Tech Hub', city: 'Karachi', price: 15000, capacity: 40, description: 'Master React, Node.js and PostgreSQL in this intensive 2-day bootcamp led by senior engineers.' },
+      { id: 2, title: 'AI & Machine Learning Summit 2025', category: 'Conference', date: '2025-07-20', location: 'Pearl Continental, Lahore', city: 'Lahore', price: 8500, capacity: 200, description: 'Join 200+ AI practitioners and researchers for a full day of talks, panels and networking.' },
+      { id: 3, title: 'AWS Solutions Architect Certification Prep', category: 'Certification', date: '2025-06-28', location: 'Islamabad Tech Centre', city: 'Islamabad', price: 25000, capacity: 25, description: 'Intensive 3-day SAA-C03 exam prep with mock tests, labs and 1:1 doubt-clearing sessions.' },
+      { id: 4, title: 'Digital Marketing Masterclass', category: 'Training', date: '2025-07-05', location: 'Arfa Software Technology Park, Lahore', city: 'Lahore', price: 6000, capacity: 60, description: 'SEO, paid ads, social media and analytics — everything you need to run modern campaigns.' },
+      { id: 5, title: 'Cybersecurity Essentials Workshop', category: 'Workshop', date: '2025-07-12', location: 'NUST, Islamabad', city: 'Islamabad', price: 0, capacity: 80, description: 'Free hands-on workshop covering network security, ethical hacking basics and OWASP Top 10.' },
+      { id: 6, title: 'Product Management Fundamentals', category: 'Training', date: '2025-08-02', location: 'Karachi Chamber of Commerce', city: 'Karachi', price: 12000, capacity: 35, description: 'Learn agile product development, user story mapping and stakeholder management from PMs at top firms.' },
+      { id: 7, title: 'Fintech & Payments Conference', category: 'Conference', date: '2025-08-18', location: 'Marriott Hotel, Islamabad', city: 'Islamabad', price: 5000, capacity: 150, description: 'The premier gathering for fintech founders, bankers and regulators shaping Pakistan\'s digital payments future.' },
+      { id: 8, title: 'Python for Data Science Bootcamp', category: 'Workshop', date: '2025-09-06', location: 'FAST NUCES, Peshawar', city: 'Peshawar', price: 9500, capacity: 30, description: 'Two days of hands-on Python, Pandas, Matplotlib and scikit-learn with real-world datasets.' },
+      { id: 9, title: 'PMP Certification Training (35 PDUs)', category: 'Certification', date: '2025-09-20', location: 'Rawalpindi IT Park', city: 'Rawalpindi', price: 35000, capacity: 20, description: 'PMI-approved 5-day classroom training covering the full PMP exam syllabus with practice exams.' },
+    ];
+    localStorage.setItem(EVENTS_KEY, JSON.stringify(events));
+  }
+
+  function getEvents() {
+    try { return JSON.parse(localStorage.getItem(EVENTS_KEY) || '[]'); } catch { return []; }
+  }
+
+  function getRegisteredCount(eventId) {
+    return getRegistrations().filter(r => r.eventId === eventId).reduce((sum, r) => sum + (r.tickets || 1), 0);
+  }
+
+  // ============================================================
+  //  APP STATE
+  // ============================================================
+  let currentUser = null;
+  let pendingEventId = null;
+  let pendingEventPrice = 0;
+  let pendingEventName = '';
+  let ticketCount = 1;
+  let searchTimer = null;
+
+  // ============================================================
+  //  TOAST
+  // ============================================================
+  function showToast(message, type = 'success') {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `<span>${type === 'success' ? '✓' : '✕'}</span> ${message}`;
+    container.appendChild(toast);
+    setTimeout(() => {
+      toast.style.animation = 'toastOut 0.25s ease forwards';
+      setTimeout(() => toast.remove(), 250);
+    }, 3500);
+  }
+
+  // ============================================================
+  //  AUTH MODAL
+  // ============================================================
+  function openAuthModal(tab = 'login') {
+    const overlay = document.getElementById('authOverlay');
+    overlay.classList.remove('hidden');
+    document.body.classList.add('modal-open');
+    overlay.scrollTop = 0;
+    switchAuthTab(tab);
+    clearAuthBanners();
+    if (tab === 'login') {
+      setTimeout(() => document.getElementById('loginEmail').focus(), 50);
+    } else {
+      setTimeout(() => document.getElementById('regName').focus(), 50);
+    }
+  }
+
+  function closeAuthModal() {
+    document.getElementById('authOverlay').classList.add('hidden');
+    document.body.classList.remove('modal-open');
+    clearAuthBanners();
+  }
+
+  function switchAuthTab(tab) {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const loginTab = document.getElementById('loginTab');
+    const registerTab = document.getElementById('registerTab');
+    const title = document.getElementById('authModalTitle');
+    const subtitle = document.getElementById('authModalSubtitle');
+    clearAuthBanners();
+    if (tab === 'login') {
+      loginForm.style.display = 'block';
+      registerForm.style.display = 'none';
+      loginTab.classList.add('active');
+      registerTab.classList.remove('active');
+      title.textContent = 'Welcome back';
+      subtitle.textContent = 'Sign in to your account to register for events';
+    } else {
+      loginForm.style.display = 'none';
+      registerForm.style.display = 'block';
+      loginTab.classList.remove('active');
+      registerTab.classList.add('active');
+      title.textContent = 'Create your account';
+      subtitle.textContent = 'Join thousands of professionals on EventHub PK';
+    }
+  }
+
+  function showAuthError(msg) {
+    const el = document.getElementById('authErrorBanner');
+    el.textContent = '✕ ' + msg;
+    el.classList.add('visible');
+    document.getElementById('authSuccessBanner').classList.remove('visible');
+  }
+
+  function showAuthSuccess(msg) {
+    const el = document.getElementById('authSuccessBanner');
+    el.textContent = '✓ ' + msg;
+    el.classList.add('visible');
+    document.getElementById('authErrorBanner').classList.remove('visible');
+  }
+
+  function clearAuthBanners() {
+    document.getElementById('authErrorBanner').classList.remove('visible');
+    document.getElementById('authSuccessBanner').classList.remove('visible');
+  }
+
+  // ============================================================
+  //  VALIDATION HELPERS
+  // ============================================================
+  function validateName(v) {
+    if (!v || !v.trim()) return { ok: false, msg: 'Name is required' };
+    if (v.trim().length < 2) return { ok: false, msg: 'At least 2 characters' };
+    if (v.trim().length > 60) return { ok: false, msg: 'Max 60 characters' };
+    if (!/^[\p{L}\s.\-']+$/u.test(v)) return { ok: false, msg: 'Invalid characters' };
+    return { ok: true, msg: '✓ Looks good' };
+  }
+  function validateEmail(v) {
+    if (!v || !v.trim()) return { ok: false, msg: 'Email is required' };
+    if (!/^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/.test(v)) return { ok: false, msg: 'Enter a valid email' };
+    if (v.length > 100) return { ok: false, msg: 'Too long' };
+    return { ok: true, msg: '✓ Looks good' };
+  }
+  function validatePhone(v, code) {
+    if (!v || !v.trim()) return { ok: false, msg: 'Phone number is required' };
+    const clean = v.replace(/\D/g, '');
+    if (code === '+92') {
+      if (clean.length !== 10) return { ok: false, msg: '10 digits required (e.g. 3XXXXXXXXX)' };
+      if (!clean.startsWith('3')) return { ok: false, msg: 'Must start with 3' };
+    } else if (clean.length < 6 || clean.length > 15) {
+      return { ok: false, msg: '6–15 digits required' };
+    }
+    return { ok: true, msg: '✓ Looks good' };
+  }
+  function validatePassword(v) {
+    if (!v || v.length < 8) return { ok: false, msg: 'Minimum 8 characters' };
+    return { ok: true, msg: '✓ Strong enough' };
+  }
+  function validateCity(v) {
+    if (!v) return { ok: false, msg: 'Please select a city' };
+    return { ok: true, msg: '✓ Selected' };
+  }
+
+  function setHint(elId, result) {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    el.textContent = result.msg;
+    el.className = 'auth-hint ' + (result.ok ? 'ok' : '');
+  }
+
+  // ============================================================
+  //  AUTH HANDLERS
+  // ============================================================
+  function handleLogin() {
+    const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+    const password = document.getElementById('loginPassword').value;
+    clearAuthBanners();
+
+    const ev = validateEmail(email);
+    setHint('loginEmailHint', ev);
+    if (!ev.ok) return;
+    if (!password) { setHint('loginPasswordHint', { ok: false, msg: 'Password is required' }); return; }
+    setHint('loginPasswordHint', { ok: true, msg: '' });
+
+    const users = getUsers();
+    const user = users.find(u => u.email === email);
+    if (!user) { showAuthError('No account found with that email. Please create an account.'); return; }
+    if (user.password !== btoa(password)) { showAuthError('Incorrect password. Please try again.'); return; }
+
+    // Create session
+    const sessionId = generateId();
+    const idx = users.indexOf(user);
+    users[idx].sessionId = sessionId;
+    saveUsers(users);
+    setSessionId(sessionId);
+    currentUser = users[idx];
+
+    closeAuthModal();
+    onUserLoggedIn();
+    showToast(`Welcome back, ${currentUser.name.split(' ')[0]}! 👋`, 'success');
+  }
+
+  function handleRegister() {
+    const name     = document.getElementById('regName').value.trim();
+    const email    = document.getElementById('regEmail').value.trim().toLowerCase();
+    const phone    = document.getElementById('regPhone').value.trim();
+    const code     = document.getElementById('regCountryCode').value;
+    const city     = document.getElementById('regCity').value;
+    const password = document.getElementById('regPassword').value;
+    clearAuthBanners();
+
+    const nv = validateName(name);     setHint('regNameHint', nv);
+    const ev = validateEmail(email);   setHint('regEmailHint', ev);
+    const pv = validatePhone(phone, code); setHint('regPhoneHint', pv);
+    const cv = validateCity(city);     setHint('regCityHint', cv);
+    const pwv = validatePassword(password); setHint('regPasswordHint', pwv);
+
+    if (!nv.ok || !ev.ok || !pv.ok || !cv.ok || !pwv.ok) return;
+
+    const users = getUsers();
+    if (users.find(u => u.email === email)) {
+      showAuthError('An account with that email already exists. Please sign in.');
+      return;
+    }
+
+    const sessionId = generateId();
+    const newUser = {
+      id: generateId(),
+      name,
+      email,
+      phone: code + phone.replace(/\D/g, ''),
+      city,
+      password: btoa(password),
+      sessionId,
+      createdAt: new Date().toISOString()
+    };
+    users.push(newUser);
+    saveUsers(users);
+    setSessionId(sessionId);
+    currentUser = newUser;
+
+    closeAuthModal();
+    onUserLoggedIn();
+    showToast(`Account created! Welcome, ${currentUser.name.split(' ')[0]}! 🎉`, 'success');
+  }
+
+  function logout() {
+    if (!confirm('Are you sure you want to log out?')) return;
+    const users = getUsers();
+    const idx = users.findIndex(u => u.id === currentUser.id);
+    if (idx !== -1) { delete users[idx].sessionId; saveUsers(users); }
+    clearSession();
+    currentUser = null;
+    onUserLoggedOut();
+    showToast('You have been logged out.', 'success');
+  }
+
+  // ============================================================
+  //  UI STATE AFTER LOGIN / LOGOUT
+  // ============================================================
+  function onUserLoggedIn() {
+    renderNavUser();
+    renderProfileSection();
+    loadEvents();
+  }
+
+  function onUserLoggedOut() {
+    renderNavUser();
+    renderProfileSection();
+    loadEvents();
+  }
+
+  function renderNavUser() {
+    const area = document.getElementById('navUserArea');
+    if (currentUser) {
+      area.innerHTML = `
+        <span class="nav-user-name">👤 ${currentUser.name.split(' ')[0]}</span>
+        <button class="btn-nav btn-nav-logout" onclick="logout()">Log Out</button>`;
+      // Hide hero "create account" button for logged-in users
+      const heroBtn = document.getElementById('heroCreateBtn');
+      if (heroBtn) heroBtn.style.display = 'none';
+    } else {
+      area.innerHTML = `
+        <button class="btn-nav btn-nav-login" onclick="openAuthModal('login')">Sign In</button>`;
+      const heroBtn = document.getElementById('heroCreateBtn');
+      if (heroBtn) heroBtn.style.display = 'inline-flex';
+    }
+  }
+
+  function renderProfileSection() {
+    const section = document.getElementById('profileSection');
+    if (currentUser) {
+      section.innerHTML = `
+        <div class="profile-card" id="profileCard">
+          <div class="profile-header">
+            <div class="profile-info">
+              <div class="profile-avatar" aria-hidden="true">👤</div>
+              <div class="profile-text">
+                <h2>Welcome, ${escHtml(currentUser.name.split(' ')[0])}!</h2>
+                <p>${escHtml(currentUser.email)} &nbsp;·&nbsp; ${escHtml(currentUser.city)}</p>
+              </div>
+            </div>
+            <button class="btn-edit" onclick="openEditProfile()">✏️ Edit Profile</button>
+          </div>
+          <div id="editProfileArea" style="display:none;">
+            <p class="profile-section-title">Edit Your Information</p>
+            <div class="form-row" id="editFormRow"></div>
+            <button class="btn-save" id="editSaveBtn" onclick="saveEditedProfile()">💾 Save Changes</button>
+            <div id="editStatus" class="status-message" aria-live="polite"></div>
+          </div>
+        </div>`;
+    } else {
+      section.innerHTML = `
+        <div class="guest-banner" id="guestBanner">
+          <div class="guest-banner-text">
+            <h3>🎟 Start registering for events</h3>
+            <p>Create a free account or sign in to register for events, manage your bookings, and never miss out.</p>
+          </div>
+          <div class="guest-banner-actions">
+            <button class="btn-primary" onclick="openAuthModal('register')">Create Free Account</button>
+            <button class="btn-edit" onclick="openAuthModal('login')">Sign In</button>
+          </div>
+        </div>`;
+    }
+  }
+
+  function escHtml(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // ============================================================
+  //  EDIT PROFILE (inline)
+  // ============================================================
+  function openEditProfile() {
+    const area = document.getElementById('editProfileArea');
+    if (!area) return;
+    area.style.display = area.style.display === 'none' ? 'block' : 'none';
+    if (area.style.display === 'none') return;
+    const codes = ['+92','+93','+1','+44','+91','+86','+61','+971','+966','+65'];
+    let code = '+92', num = currentUser.phone || '';
+    for (const c of codes) { if (num.startsWith(c)) { code = c; num = num.slice(c.length); break; } }
+    document.getElementById('editFormRow').innerHTML = `
+      <div class="form-group">
+        <label for="epName">Full Name <span class="required">*</span></label>
+        <input type="text" id="epName" value="${escHtml(currentUser.name)}" oninput="epValidate()">
+        <span id="epNameErr" class="error-text"></span>
+      </div>
+      <div class="form-group">
+        <label for="epPhone">Phone Number</label>
+        <div class="phone-group">
+          <select id="epCode" onchange="epValidate()">
+            ${codes.map(c => `<option value="${c}" ${c===code?'selected':''}>${c}</option>`).join('')}
+          </select>
+          <input type="tel" id="epPhone" value="${escHtml(num)}" oninput="epValidate()">
+        </div>
+        <span id="epPhoneErr" class="error-text"></span>
+      </div>
+      <div class="form-group">
+        <label for="epCity">City <span class="required">*</span></label>
+        <select id="epCity" onchange="epValidate()">
+          <option value="">Select City</option>
+          ${['Karachi','Lahore','Islamabad','Rawalpindi','Faisalabad','Multan','Gujranwala','Hyderabad','Peshawar','Quetta'].map(c=>`<option value="${c}" ${c===currentUser.city?'selected':''}>${c}</option>`).join('')}
+        </select>
+        <span id="epCityErr" class="error-text"></span>
+      </div>`;
+    epValidate();
+  }
+
+  function epValidate() {
+    const name = (document.getElementById('epName')||{}).value || '';
+    const phone = (document.getElementById('epPhone')||{}).value || '';
+    const code = (document.getElementById('epCode')||{}).value || '+92';
+    const city = (document.getElementById('epCity')||{}).value || '';
+    const nv = validateName(name);
+    const pv = validatePhone(phone, code);
+    const cv = validateCity(city);
+    const ne = document.getElementById('epNameErr');
+    const pe = document.getElementById('epPhoneErr');
+    const ce = document.getElementById('epCityErr');
+    if (ne) ne.textContent = nv.ok ? '' : nv.msg;
+    if (pe) pe.textContent = pv.ok ? '' : pv.msg;
+    if (ce) ce.textContent = cv.ok ? '' : cv.msg;
+    const btn = document.getElementById('editSaveBtn');
+    if (btn) btn.disabled = !(nv.ok && pv.ok && cv.ok);
+  }
+
+  function saveEditedProfile() {
+    const name = document.getElementById('epName').value.trim();
+    const phone = document.getElementById('epPhone').value.trim();
+    const code = document.getElementById('epCode').value;
+    const city = document.getElementById('epCity').value;
+    const nv = validateName(name);
+    const pv = validatePhone(phone, code);
+    const cv = validateCity(city);
+    if (!nv.ok || !pv.ok || !cv.ok) { showToast('Fix all errors before saving.', 'error'); return; }
+
+    const users = getUsers();
+    const idx = users.findIndex(u => u.id === currentUser.id);
+    if (idx === -1) { showToast('Session error. Please log in again.', 'error'); return; }
+    users[idx].name = name;
+    users[idx].phone = code + phone.replace(/\D/g, '');
+    users[idx].city = city;
+    saveUsers(users);
+    currentUser = users[idx];
+
+    renderProfileSection();
+    showToast('Profile updated successfully!', 'success');
+    loadEvents();
+  }
+
+  // ============================================================
+  //  EVENTS
+  // ============================================================
+  function debounceLoadEvents() {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(loadEvents, 300);
+  }
+
+  function loadEvents() {
+    const category = document.getElementById('categoryFilter').value;
+    const city = document.getElementById('cityFilter').value;
+    const search = (document.getElementById('searchFilter').value || '').toLowerCase();
+    const list = document.getElementById('eventsList');
+    list.innerHTML = '<div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div>';
+
+    // Simulate async
+    setTimeout(() => {
+      let events = getEvents();
+      if (category !== 'all') events = events.filter(e => e.category === category);
+      if (city !== 'all') events = events.filter(e => e.city === city);
+      if (search) events = events.filter(e =>
+        e.title.toLowerCase().includes(search) ||
+        (e.description||'').toLowerCase().includes(search) ||
+        e.city.toLowerCase().includes(search)
+      );
+
+      if (!events.length) {
+        list.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">📭</div><h3>No events found</h3><p>Try adjusting your filters or search term.</p></div>`;
+        return;
+      }
+
+      list.innerHTML = events.map(event => {
+        const regCount = getRegisteredCount(event.id);
+        const available = event.capacity - regCount;
+        const pct = Math.round((regCount / event.capacity) * 100);
+        const almostFull = pct >= 80;
+        const badgeClass = event.category.toLowerCase();
+        const seatsLabel = available === 0 ? 'Sold out' : available <= 5 ? `⚠ Only ${available} left` : `${available} seats left`;
+        const price = event.price === 0 ? '<span class="event-price event-price-free">Free</span>' : `<span class="event-price">PKR ${event.price.toLocaleString()}</span>`;
+        let btn;
+        if (!currentUser) {
+          btn = `<button class="register-btn login-required" onclick="openAuthModal('login')">🔐 Sign In to Register</button>`;
+        } else if (available === 0) {
+          btn = '<button class="register-btn full" disabled>Sold Out</button>';
+        } else {
+          const already = getRegistrations().find(r => r.userId === currentUser.id && r.eventId === event.id);
+          if (already) {
+            btn = `<button class="register-btn" disabled style="background:var(--green-100);color:var(--green-800);">✓ Already Registered</button>`;
+          } else {
+            btn = `<button class="register-btn" onclick="openModal(${event.id}, ${event.price}, '${event.title.replace(/'/g,"\\'")}')">Register Now →</button>`;
+          }
+        }
+        return `
+          <article class="event-card" aria-label="${escHtml(event.title)}">
+            <div class="event-card-top">
+              <span class="event-badge ${badgeClass}">${event.category}</span>
+              <span class="event-seats-badge ${available <= 5 && available > 0 ? 'urgent' : ''}">${seatsLabel}</span>
+            </div>
+            <div class="event-content">
+              <h3 class="event-title">${escHtml(event.title)}</h3>
+              <div class="event-meta">
+                <span class="event-meta-item">📅 ${new Date(event.date).toLocaleDateString('en-PK',{day:'numeric',month:'short',year:'numeric'})}</span>
+                <span class="event-meta-item">📍 ${escHtml(event.location)}</span>
+              </div>
+              ${event.description ? `<p class="event-description">${escHtml(event.description)}</p>` : ''}
+              <div class="event-footer">
+                <div class="event-price-row">${price}<span style="font-size:0.78rem;color:var(--slate-400);">${regCount}/${event.capacity} registered</span></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><div class="progress-fill ${almostFull ? 'almost-full' : ''}" style="width:${pct}%"></div></div>
+                ${btn}
+              </div>
+            </div>
+          </article>`;
+      }).join('');
+    }, 200);
+  }
+
+  // ============================================================
+  //  TICKET MODAL
+  // ============================================================
+  function openModal(id, price, name) {
+    if (!currentUser) { openAuthModal('login'); return; }
+    pendingEventId = id;
+    pendingEventPrice = price;
+    pendingEventName = name;
+    ticketCount = 1;
+    document.getElementById('modal-event-name').textContent = name;
+    document.getElementById('ticketCount').textContent = 1;
+    document.getElementById('modalTotal').textContent = price === 0 ? 'Free' : `PKR ${price.toLocaleString()}`;
+    document.getElementById('ticketModal').classList.remove('hidden');
+    document.getElementById('confirmBtn').disabled = false;
+    document.getElementById('confirmBtn').textContent = 'Confirm Registration →';
+  }
+
+  function closeModal() { document.getElementById('ticketModal').classList.add('hidden'); }
+
+  function changeTickets(delta) {
+    ticketCount = Math.max(1, Math.min(5, ticketCount + delta));
+    document.getElementById('ticketCount').textContent = ticketCount;
+    const total = pendingEventPrice * ticketCount;
+    document.getElementById('modalTotal').textContent = pendingEventPrice === 0 ? 'Free' : `PKR ${total.toLocaleString()}`;
+  }
+
+  function confirmRegistration() {
+    if (!pendingEventId || !currentUser) return;
+    const events = getEvents();
+    const event = events.find(e => e.id === pendingEventId);
+    if (!event) { showToast('Event not found.', 'error'); closeModal(); return; }
+    const regCount = getRegisteredCount(event.id);
+    const available = event.capacity - regCount;
+    if (ticketCount > available) { showToast(`Only ${available} seats available.`, 'error'); return; }
+
+    const regs = getRegistrations();
+    // Check duplicate
+    if (regs.find(r => r.userId === currentUser.id && r.eventId === pendingEventId)) {
+      showToast('You are already registered for this event.', 'error'); closeModal(); return;
+    }
+
+    const newReg = {
+      id: generateId(),
+      userId: currentUser.id,
+      eventId: pendingEventId,
+      eventTitle: event.title,
+      eventDate: event.date,
+      tickets: ticketCount,
+      totalAmount: pendingEventPrice * ticketCount,
+      registeredAt: new Date().toISOString()
+    };
+    regs.push(newReg);
+    saveRegistrations(regs);
+
+    closeModal();
+    showToast(`🎉 Registered for ${pendingEventName}!`, 'success');
+    loadEvents();
+    loadStats();
+  }
+
+  document.getElementById('ticketModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+
+  // ============================================================
+  //  MY REGISTRATIONS
+  // ============================================================
+  function loadMyRegistrations() {
+    if (!currentUser) {
+      document.getElementById('myEventsList').innerHTML = `
+        <div class="empty-state"><div class="empty-icon">🔐</div><h3>Sign in to view your registrations</h3>
+        <p><button class="btn-primary" style="margin-top:1rem;" onclick="openAuthModal('login')">Sign In</button></p></div>`;
+      return;
+    }
+    const regs = getRegistrations().filter(r => r.userId === currentUser.id);
+    const container = document.getElementById('myEventsList');
+    if (!regs.length) {
+      container.innerHTML = `<div class="empty-state"><div class="empty-icon">🎫</div><h3>No registrations yet</h3><p>Browse events and register to see them here.</p></div>`;
+      return;
+    }
+    container.innerHTML = `
+      <div class="my-events-list">
+        <div class="my-events-header"><h3>My Registrations (${regs.length})</h3></div>
+        ${regs.map(r => `
+          <div class="my-event-item">
+            <div class="my-event-info">
+              <strong>${escHtml(r.eventTitle)}</strong>
+              <div class="my-event-meta">
+                <span>📅 ${new Date(r.eventDate).toLocaleDateString('en-PK',{day:'numeric',month:'short',year:'numeric'})}</span>
+                <span>🎫 ${r.tickets} ticket${r.tickets > 1 ? 's' : ''}</span>
+                <span class="my-event-amount">${r.totalAmount === 0 ? 'Free' : 'PKR ' + r.totalAmount.toLocaleString()}</span>
+              </div>
+            </div>
+            <button class="cancel-btn" onclick="cancelRegistration('${r.id}', '${escHtml(r.eventTitle).replace(/'/g,"\\'")}')">Cancel</button>
+          </div>`).join('')}
+      </div>`;
+  }
+
+  function cancelRegistration(regId, title) {
+    if (!confirm(`Cancel registration for "${title}"?`)) return;
+    const regs = getRegistrations().filter(r => r.id !== regId);
+    saveRegistrations(regs);
+    showToast('Registration cancelled.', 'success');
+    loadMyRegistrations();
+    loadEvents();
+    loadStats();
+  }
+
+  // ============================================================
+  //  STATS
+  // ============================================================
+  function loadStats() {
+    const events = getEvents();
+    const regs = getRegistrations();
+    const users = getUsers();
+    const now = new Date();
+    const upcoming = events.filter(e => new Date(e.date) >= now).length;
+    document.getElementById('stat-events').textContent = events.length;
+    document.getElementById('stat-upcoming').textContent = upcoming;
+    document.getElementById('stat-registrations').textContent = regs.reduce((s, r) => s + (r.tickets || 1), 0);
+    document.getElementById('stat-users').textContent = users.length;
+  }
+
+  // ============================================================
+  //  TABS
+  // ============================================================
+  function showTab(tab) {
+    const eSection = document.getElementById('eventsSection');
+    const mSection = document.getElementById('myEventsSection');
+    document.getElementById('eventsTabBtn').classList.toggle('active', tab === 'events');
+    document.getElementById('myEventsTabBtn').classList.toggle('active', tab === 'myevents');
+    document.getElementById('eventsTabBtn').setAttribute('aria-selected', tab === 'events');
+    document.getElementById('myEventsTabBtn').setAttribute('aria-selected', tab === 'myevents');
+    if (tab === 'events') { eSection.style.display = 'block'; mSection.style.display = 'none'; loadEvents(); }
+    else { eSection.style.display = 'none'; mSection.style.display = 'block'; loadMyRegistrations(); }
+  }
+
+  // ============================================================
+  //  FAQ
+  // ============================================================
+  const faqs = [
+    { q: 'How do I register for an event?', a: 'Create a free account or sign in, then browse events and click "Register Now". Select your ticket quantity and confirm. Your registration is saved to your account.' },
+    { q: 'Do I need to create an account?', a: 'Yes — a free account lets you register for events, track your bookings under "My Registrations", and keeps all your data across sessions. No need to re-enter your details each time.' },
+    { q: 'Can I cancel my registration?', a: 'Yes, go to "My Registrations" and click Cancel. Refund policies vary per event — please check event details before cancelling.' },
+    { q: 'How many tickets can I purchase?', a: 'You can purchase up to 5 tickets per registration. For bulk orders (10+), please contact us directly.' },
+    { q: 'Which cities are covered?', a: 'We currently cover Karachi, Lahore, Islamabad, Rawalpindi, Faisalabad, Multan, Gujranwala, Hyderabad, Peshawar, and Quetta. More cities coming soon.' },
+    { q: 'Is my data secure?', a: 'All data is stored locally in your browser for this demo. In production, we use industry-standard encryption and certified payment gateways.' },
+  ];
+  document.getElementById('faqList').innerHTML = faqs.map(f => `
+    <details style="background:white;border-radius:var(--radius-md);border:1px solid var(--slate-200);overflow:hidden;">
+      <summary style="padding:1.1rem 1.25rem;cursor:pointer;font-weight:600;font-size:0.95rem;color:var(--slate-800);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        ${f.q}<span style="font-size:1.2rem;color:var(--slate-400);">+</span>
+      </summary>
+      <div style="padding:0 1.25rem 1.1rem;font-size:0.9rem;color:var(--slate-600);line-height:1.65;">${f.a}</div>
+    </details>`).join('');
+
+  // ============================================================
+  //  KEYBOARD / ESCAPE
+  // ============================================================
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeModal();
+      closeAuthModal();
+    }
+  });
+
+  // Close auth overlay on background click
+  document.getElementById('authOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeAuthModal();
+  });
+
+  // ============================================================
+  //  INIT
+  // ============================================================
+  (function init() {
+    seedEvents();
+    currentUser = getCurrentUser();
+    renderNavUser();
+    renderProfileSection();
+    loadEvents();
+    loadStats();
+  })();
+  </script>
+</body>
+</html>
