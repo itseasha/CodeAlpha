@@ -3,9 +3,9 @@
 
 | # | Project | Description | Tech Stack | Port |
 |---|---------|-------------|------------|------|
-| 1 | [URL Shortener](./task1-url-shortener/) | Shorten long URLs with click tracking and analytics | Node.js, Express, SQLite | 3001 |
-| 2 | [Event Registration System](./task2-event-registration/) | Complete event booking platform with user profiles | Node.js, Express, SQLite | 3002 |
-| 3 | [Restaurant Management System](./task3-restaurant-management/) | Full-featured restaurant operations API | Node.js, Express, In-Memory DB | 3003 |
+| 1 | [URL Shortener](./Task1-UrlShortener/) | Shorten long URLs with click tracking and analytics | Node.js, Express, SQLite | 3001 |
+| 2 | [Event Registration System](./Task2-EventRegistration/) | Complete event booking platform with user profiles | Node.js, Express, SQLite | 3002 |
+| 3 | [Restaurant Management System](./Task3-RestaurantManagement/) | Full-featured restaurant operations API | Node.js, Express, In-Memory DB | 3003 |
 
 ---
 
